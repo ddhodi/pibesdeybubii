@@ -191,6 +191,32 @@ h1{
     line-height:1.6;
 }
 
+.start-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #06b6d4,
+        #3b82f6
+    );
+
+    color:white;
+    font-size:16px;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.start-btn:hover{
+    transform:translateY(-2px);
+}
+
 @media(max-width:600px){
 
     body{
@@ -232,12 +258,28 @@ h1{
 
     <div id="quiz">
 
-<h1>☕ Sebelum Konsultasi</h1>
+        <div id="intro">
 
-<p class="subtitle">
-Jawab 3 pertanyaan singkat.
-Butuh kurang dari 15 detik dan tidak ada soal matematika.
-</p>
+            <h1>☕ Sebelum Konsultasi</h1>
+
+            <p class="subtitle">
+                Jawab 3 pertanyaan singkat.
+                Butuh kurang dari 15 detik dan tidak ada soal matematika.
+            </p>
+
+            <button id="startBtn" class="start-btn">
+                Mulai
+            </button>
+
+        </div>
+
+        <div id="questionArea" style="display:none">
+
+            <div class="question" id="question"></div>
+
+            <div class="options" id="options"></div>
+
+        </div>
 
     </div>
 
@@ -376,7 +418,17 @@ document.getElementById("waLink").href = url;
 
 }
 
-renderQuestion();
+document
+.getElementById("startBtn")
+.addEventListener("click",()=>{
+
+    document.getElementById("intro").style.display="none";
+
+    document.getElementById("questionArea").style.display="block";
+
+    renderQuestion();
+
+});
 
 </script>
 
